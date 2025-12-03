@@ -27,19 +27,7 @@ import { getModelDisplayName } from "./key_team_helpers/fetch_available_models_t
 import { useQueryClient } from "@tanstack/react-query";
 import NotificationsManager from "./molecules/notifications_manager";
 import TeamDropdown from "./common_components/team_dropdown";
-
-// Helper function to generate UUID compatible across all environments
-const generateUUID = (): string => {
-  if (typeof crypto !== "undefined" && crypto.randomUUID) {
-    return crypto.randomUUID();
-  }
-  // Fallback UUID generation for environments without crypto.randomUUID
-  return "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, function (c) {
-    const r = (Math.random() * 16) | 0;
-    const v = c == "x" ? r : (r & 0x3) | 0x8;
-    return v.toString(16);
-  });
-};
+import { generateUUID } from "@/utils/uuidUtils";
 
 interface CreateuserProps {
   userID: string;
