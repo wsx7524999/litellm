@@ -9,6 +9,7 @@ import {
   getProxyBaseUrl,
   registerMcpOAuthClient,
 } from "@/components/networking";
+import { generateUUID } from "@/utils/uuidUtils";
 
 export type McpOAuthStatus = "idle" | "authorizing" | "exchanging" | "success" | "error";
 
@@ -139,7 +140,7 @@ export const useMcpOAuthFlow = ({
 
       const verifier = generateCodeVerifier();
       const challenge = await generateCodeChallenge(verifier);
-      const state = crypto.randomUUID();
+      const state = generateUUID();
 
       const clientId = registeredClient.clientId || credentials.client_id;
       const scopeString = Array.isArray(credentials.scopes)
