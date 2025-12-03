@@ -9,7 +9,7 @@ describe("generateUUID", () => {
 
     beforeEach(() => {
       // Spy on crypto.randomUUID
-      randomUUIDSpy = vi.spyOn(crypto, "randomUUID").mockReturnValue("mock-uuid-1234-5678-9abc-def012345678" as `${string}-${string}-${string}-${string}-${string}`);
+      randomUUIDSpy = vi.spyOn(crypto, "randomUUID").mockReturnValue("a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d" as `${string}-${string}-${string}-${string}-${string}`);
     });
 
     afterEach(() => {
@@ -18,7 +18,7 @@ describe("generateUUID", () => {
 
     it("should use crypto.randomUUID when available", () => {
       const uuid = generateUUID();
-      expect(uuid).toBe("mock-uuid-1234-5678-9abc-def012345678");
+      expect(uuid).toBe("a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d");
       expect(randomUUIDSpy).toHaveBeenCalled();
     });
   });
